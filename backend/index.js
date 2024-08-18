@@ -87,6 +87,23 @@ app.put('/updatecloth/:id', async (req, res) => {
     }
 });
 
+//Route for deleting a cloth
+app.delete('/deletecloth/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const cloth = await Cloth.findById(id);
+        if (!cloth) {
+            return res.status(404).send({ message: "Cloth not found" });
+        }
+
+        const result = await Cloth.findByIdAndDelete(id);
+
+        return res.status(200).send({ message: 'Cloth deleted successfully' });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
+    }
+});
 
 
 mongoose
