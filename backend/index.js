@@ -55,6 +55,20 @@ app.get('/getclothes', async (req, res) => {
     }
 });
 
+//Route for getting a cloth by id
+app.get('/getcloth/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const cloth = await Cloth.findById(id);
+        if (!cloth) {
+            return res.status(404).send({ message: "Cloth not found" });
+        }
+        return res.status(200).json(cloth);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
+    }
+});
 
 mongoose
     .connect(mongoDBURL)
