@@ -1,10 +1,11 @@
 import express from "express";
-import { Cloth } from "../models/clothModel";
+import { Cloth } from "../models/clothModel.js";
+
 
 const router = express.Router()
 
 //Route for saving a new cloth
-app.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         if (
             !req.body.name ||
@@ -30,7 +31,7 @@ app.post('/', async (req, res) => {
 });
 
 //Route for getting all cloths
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const cloths = await Cloth.find();
         return res.status(200).json(
@@ -46,7 +47,7 @@ app.get('/', async (req, res) => {
 });
 
 //Route for getting a cloth by id
-app.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const cloth = await Cloth.findById(id);
@@ -61,7 +62,7 @@ app.get('/:id', async (req, res) => {
 });
 
 //Route for updating a cloth
-app.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const cloth = await Cloth.findById(id);
@@ -78,7 +79,7 @@ app.put('/:id', async (req, res) => {
 });
 
 //Route for deleting a cloth
-app.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const cloth = await Cloth.findById(id);
