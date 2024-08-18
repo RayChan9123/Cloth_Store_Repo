@@ -20,4 +20,4 @@ const clothSchema = mongoose.Schema(
     }
 )
 
-const Cloth = mongoose.model('Cloth1', clothSchema);
+export const Cloth = mongoose.model('Cloth1', clothSchema);
