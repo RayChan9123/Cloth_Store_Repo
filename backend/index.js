@@ -39,6 +39,22 @@ app.post('/savecloth', async (req, res) => {
     }
 });
 
+//Route for getting all cloths
+app.get('/getclothes', async (req, res) => {
+    try {
+        const cloths = await Cloth.find();
+        return res.status(200).json(
+            {
+                count: cloths.length,
+                data: cloths
+            }
+        );
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
+    }
+});
+
 
 mongoose
     .connect(mongoDBURL)
