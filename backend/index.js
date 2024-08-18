@@ -70,6 +70,25 @@ app.get('/getcloth/:id', async (req, res) => {
     }
 });
 
+//Route for updating a cloth
+app.put('/updatecloth/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const cloth = await Cloth.findById(id);
+        if (!cloth) {
+            return res.status(404).send({ message: "Cloth not found" });
+        }
+        const updatedCloth = await Cloth.findByIdAndUpdate(id, req.body, { new: true });
+
+        return res.status(200).send({ message: 'Cloth updated successfully' });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message });
+    }
+});
+
+
+
 mongoose
     .connect(mongoDBURL)
     .then(() => {
