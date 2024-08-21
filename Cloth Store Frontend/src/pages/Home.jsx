@@ -17,7 +17,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:4000/clothes')
+            .get('https://cloth-store-repo-backend.onrender.com/clothes')
             .then((response) => {
                 setClothes(response.data.data);
                 setLoading(false);

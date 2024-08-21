@@ -15,7 +15,7 @@ const DeleteCloth = () => {
     const handleDeleteCloth = () => {
         setLoading(true);
         axios
-            .delete(`http://localhost:4000/clothes/${id}`)
+            .delete(`https://cloth-store-repo-backend.onrender.com/clothes/${id}`)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar('Cloth Deleted successfully', { variant: 'success' });

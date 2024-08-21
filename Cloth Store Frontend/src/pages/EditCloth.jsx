@@ -17,7 +17,7 @@ const EditClothes = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:4000/clothes/${id}`)
+            .get(`https://cloth-store-repo-backend.onrender.com/clothes/${id}`)
             .then((res) => {
                 setName(res.data.name);
                 setPrice(res.data.price);
@@ -39,7 +39,7 @@ const EditClothes = () => {
         };
         setLoading(true);
         axios
-            .put(`http://localhost:4000/clothes/${id}`, data)
+            .put(`https://cloth-store-repo-backend.onrender.com/clothes/${id}`, data)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar('Cloth Edited successfully', { variant: 'success' });

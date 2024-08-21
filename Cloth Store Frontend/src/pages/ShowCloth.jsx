@@ -12,7 +12,7 @@ const ShowCloth = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:4000/clothes/${id}`)
+            .get(`https://cloth-store-repo-backend.onrender.com/clothes/${id}`)
             .then((res) => {
                 setcloth(res.data);
                 setLoading(false);

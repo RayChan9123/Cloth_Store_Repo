@@ -21,7 +21,7 @@ const CreateClothes = () => {
         };
         setLoading(true);
         axios
-            .post('http://localhost:4000/clothes', data)
+            .post('https://cloth-store-repo-backend.onrender.com/clothes', data)
             .then(() => {
                 setLoading(false);
                 enqueueSnackbar('Cloth created successfully', { variant: 'success' });
